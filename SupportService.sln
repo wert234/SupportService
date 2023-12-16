@@ -7,27 +7,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{035153
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{34D240DC-A39F-435C-A1D4-028393662570}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Domain", "Shared.Core\Shared.Domain.csproj", "{56C5B9A4-F0D8-466E-BE02-BCF65C6D01BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Domain", "Shared\Shared.Domain\Shared.Domain.csproj", "{56C5B9A4-F0D8-466E-BE02-BCF65C6D01BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Shared.Infrastructure\Shared.Infrastructure.csproj", "{C77B55A4-65E1-4AAA-B59F-A52FE614FAE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{C77B55A4-65E1-4AAA-B59F-A52FE614FAE6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Application", "Shared.Application\Shared.Application.csproj", "{98D6F91F-0F77-4473-A347-ADFD90E3C313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Application", "Shared\Shared.Application\Shared.Application.csproj", "{98D6F91F-0F77-4473-A347-ADFD90E3C313}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{B4389996-D576-450A-ACB6-BBE584D4D86A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "Api.Main\API.csproj", "{41E42499-8DF9-478A-94FE-BF950E8FFB27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "Host\API\API.csproj", "{41E42499-8DF9-478A-94FE-BF950E8FFB27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{AF1838BF-1CE0-4AF7-AFCD-851DB4702679}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chat", "Chat", "{D8AE365E-C826-4409-82C2-C550B056D13B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication", "Modules.Authentication\Modules.Authentication.csproj", "{89E55D97-F80B-4A6A-AF85-4C836B3E7400}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication", "Modules\Authentication\Modules.Authentication\Modules.Authentication.csproj", "{89E55D97-F80B-4A6A-AF85-4C836B3E7400}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Domain", "Modules.Authentication.Domain\Modules.Authentication.Domain.csproj", "{CB7224E1-4FDE-4A0F-AB3F-B6A9AD99CB0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Domain", "Modules\Authentication\Modules.Authentication.Domain\Modules.Authentication.Domain.csproj", "{CB7224E1-4FDE-4A0F-AB3F-B6A9AD99CB0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Infrastructure", "Modules.Authentication.Infrastructure\Modules.Authentication.Infrastructure.csproj", "{8617DFC9-2045-4771-AFEE-65A96EF62D48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Infrastructure", "Modules\Authentication\Modules.Authentication.Infrastructure\Modules.Authentication.Infrastructure.csproj", "{8617DFC9-2045-4771-AFEE-65A96EF62D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Application", "Modules.Authentication.Application\Modules.Authentication.Application.csproj", "{11632C30-008D-49BE-91E8-F355EC151F48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Application", "Modules\Authentication\Modules.Authentication.Application\Modules.Authentication.Application.csproj", "{11632C30-008D-49BE-91E8-F355EC151F48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat", "Modules.Chat\Modules.Chat.csproj", "{599125C1-6E54-412B-8702-83825FC7D596}"
 EndProject
