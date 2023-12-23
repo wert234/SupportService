@@ -1,5 +1,5 @@
 ﻿
-namespace Shared.Domain.Enums
+namespace Modules.Chat.Domain.Enums
 {
     public enum Status
     {

@@ -1,6 +1,6 @@
-﻿using Shared.Domain.Enums;
+﻿using Modules.Chat.Domain.Enums;
 
-namespace Shared.Domain.Entitys
+namespace Modules.Chat.Domain.Entitys
 {
     public class Appeal
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Shared.Domain.Entitys
+namespace Modules.Chat.Domain.Entitys
 {
     public class Message
     {

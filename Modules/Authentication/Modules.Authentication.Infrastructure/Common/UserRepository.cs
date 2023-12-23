@@ -2,12 +2,6 @@
 using Modules.Authentication.Application.Common;
 using Modules.Authentication.Domain.Entitys;
 using Modules.Authentication.Infrastructure.Data;
-using Shared.Domain.Entitys;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Modules.Authentication.Infrastructure.Common
 {
@@ -28,12 +22,7 @@ namespace Modules.Authentication.Infrastructure.Common
 
         public async Task Delete(int id)
         {
-            await dbContext.Users.Remove(dbContext.Users.Find(user => user.Id == id));
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
+          await Task.Run(async () => dbContext.Users.Remove(await Get(id)));
         }
 
         public async Task<ApplicationUser> Get(int id)
@@ -59,6 +48,27 @@ namespace Modules.Authentication.Infrastructure.Common
         public async Task Update(ApplicationUser item)
         {
             await Task.Run(() => dbContext.Update(item));
+        }
+
+        private bool disposed = false;
+
+        public virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    dbContext.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public async void Dispose()
+        {
+            await Save();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
