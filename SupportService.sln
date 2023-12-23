@@ -29,13 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authentication.Application", "Modules\Authentication\Modules.Authentication.Application\Modules.Authentication.Application.csproj", "{11632C30-008D-49BE-91E8-F355EC151F48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat", "Modules.Chat\Modules.Chat.csproj", "{599125C1-6E54-412B-8702-83825FC7D596}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat", "Modules\Chat\Modules.Chat\Modules.Chat.csproj", "{599125C1-6E54-412B-8702-83825FC7D596}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Domain", "Modules.Chat.Domain\Modules.Chat.Domain.csproj", "{22CB721E-B1C4-4AB6-BFB7-3CD19619FD16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Domain", "Modules\Chat\Modules.Chat.Domain\Modules.Chat.Domain.csproj", "{22CB721E-B1C4-4AB6-BFB7-3CD19619FD16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Infrastructure", "Modules.Chat.Infrastructure\Modules.Chat.Infrastructure.csproj", "{615BD4AD-7254-4267-B4EC-CFAAE3FF2EA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Infrastructure", "Modules\Chat\Modules.Chat.Infrastructure\Modules.Chat.Infrastructure.csproj", "{615BD4AD-7254-4267-B4EC-CFAAE3FF2EA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Application", "Modules.Chat.Application\Modules.Chat.Application.csproj", "{7D89162B-C07A-4E3C-9ECA-ADC859BF270A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Chat.Application", "Modules\Chat\Modules.Chat.Application\Modules.Chat.Application.csproj", "{7D89162B-C07A-4E3C-9ECA-ADC859BF270A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

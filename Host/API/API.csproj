@@ -16,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Modules.Authentication\Modules.Authentication.csproj" />
-    <ProjectReference Include="..\Modules.Chat\Modules.Chat.csproj" />
-    <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Modules\Authentication\Modules.Authentication\Modules.Authentication.csproj" />
+    <ProjectReference Include="..\..\Modules\Chat\Modules.Chat\Modules.Chat.csproj" />
+    <ProjectReference Include="..\..\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
