@@ -1,6 +1,5 @@
 ﻿using Modules.Authentication.Domain.Entitys;
 using Shared.Application.Common;
-using Shared.Domain.Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
