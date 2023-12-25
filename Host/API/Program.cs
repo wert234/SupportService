@@ -1,14 +1,40 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Modules.Authentication.Controllers;
 using Modules.Authentication.Domain.Entitys;
+using Modules.Authentication.Domain.JWT.Classes;
 using Modules.Authentication.Infrastructure.Data;
 using Modules.Chat.Controllers;
 using Modules.Chat.Infrastructure.Data;
 using Shared.Infrastructure.Common;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Modules.Authentication.Application.Handlers;
+using Modules.Authentication.Application.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region Jwt Settings
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+options.TokenValidationParameters = new TokenValidationParameters()
+{
+   ValidateIssuer = true,
+   ValidateAudience = true,
+   ValidateLifetime = true,
+   ValidateIssuerSigningKey = true,
+   ValidIssuer = builder.Configuration["Jwt:Issuer"],
+   ValidAudience = builder.Configuration["Jwt:Audience"],
+   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+};
+});
+builder.Services.AddTransient<JwtTokenGenerator>(); 
+
+#endregion
 
 builder.Services.AddControllers()
    .AddApplicationPart(typeof(AuthenticationController).Assembly)
@@ -17,6 +43,15 @@ builder.Services.AddControllers()
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#region MediatR Settings
+
+builder.Services.AddMediatR(options =>
+{
+options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
+}); 
+
+#endregion
 
 #region DataBase Settings
 

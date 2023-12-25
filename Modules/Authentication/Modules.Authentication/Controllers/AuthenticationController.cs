@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Modules.Authentication.Application.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,19 @@ namespace Modules.Authentication.Controllers
     [AllowAnonymous]
     public class AuthenticationController : ControllerBase
     {
+        #region Fileds
+
+        private IMediator _mediator;
+
+        #endregion
+
+        #region Init
+
+        public AuthenticationController(IMediator mediator)
+        => _mediator = mediator;
+
+        #endregion
+
         #region Controllers
 
         [HttpPost("Registration")]
@@ -30,6 +45,15 @@ namespace Modules.Authentication.Controllers
         {
             //     var result = await _mediator.Send(command);
             return Ok(); //ControllerHandle.Resultchecking(result.Success, true, result);
+        }
+
+        [HttpPost("GetToken")]
+        public async Task<IActionResult> GetToken()
+        {
+            var querie = new GetTokenQuerie();
+            querie.User = new Domain.Entitys.ApplicationUser() { UserName = "Влад", Id = 1 };
+
+            return Ok(await _mediator.Send(querie));
         }
 
         #endregion
