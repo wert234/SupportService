@@ -1,12 +1,20 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Modules.Authentication.Controllers;
 using Modules.Authentication.Domain.Entitys;
 using Modules.Authentication.Infrastructure.Data;
+using Modules.Chat.Controllers;
 using Modules.Chat.Infrastructure.Data;
+using Shared.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+   .AddApplicationPart(typeof(AuthenticationController).Assembly)
+   .AddApplicationPart(typeof(AppealsController).Assembly)
+   .AddApplicationPart(typeof(ChatController).Assembly);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
