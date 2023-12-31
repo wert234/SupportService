@@ -38,15 +38,15 @@ namespace Modules.Authentication.Controllers
         [HttpPost("Registration")]
         public async Task<IActionResult> Registration(RegistrationCommand command)
         {
-                var result = await _mediator.Send(command);
+            var result = await _mediator.Send(command);
             return ControllerHandle.Resultchecking(result, true);
         }
 
         [HttpPost("Authorization")]
-        public async Task<IActionResult> Authorization(/*AuthorizationCommand command*/)
+        public async Task<IActionResult> Authorization(AuthorizationCommand command)
         {
-            //     var result = await _mediator.Send(command);
-            return Ok(); //ControllerHandle.Resultchecking(result.Success, true, result);
+            var result = await _mediator.Send(command);
+            return ControllerHandle.Resultchecking(result.Success, true, result);
         }
 
         [HttpPost("GetToken")]

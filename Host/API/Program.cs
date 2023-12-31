@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Modules.Authentication.Application.Handlers;
 using Modules.Authentication.Application.Queries;
+using Modules.Authentication.Application.Commands;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +49,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(options =>
 {
-options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(RegistrationHandle).Assembly, typeof(RegistrationCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(AuthorizationHandle).Assembly, typeof(AuthorizationCommand).Assembly);
 }); 
 
 #endregion
