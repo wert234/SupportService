@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Modules.Chat.Application.Command;
 using Modules.Chat.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -17,14 +18,14 @@ namespace Modules.Chat.Controllers
     {
         #region Fileds
 
-    //    private IMediator _mediator;
+        private IMediator _mediator;
 
         #endregion
 
         #region Init
 
-    //    public AppealsController(IMediator mediator)
-     //   => _mediator = mediator;
+        public AppealsController(IMediator mediator)
+        => _mediator = mediator;
 
         #endregion
 
@@ -37,7 +38,7 @@ namespace Modules.Chat.Controllers
         [HttpPost("CreateAppeal")]
         public async Task<IActionResult> CreateAppeal(Appeal appeal)
         {
-          //  await _mediator.Send(new AddAppealCommand(appeal));
+            await _mediator.Send(new AddAppealCommand(appeal));
             return StatusCode(201);
         }
         #endregion

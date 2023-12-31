@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Modules.Chat.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using Modules.Chat.Infrastructure.Data;
 namespace Modules.Chat.Infrastructure.Migrations
 {
     [DbContext(typeof(AppealDbContext))]
-    partial class AppealDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231231132842_Add_Name_Appeal")]
+    partial class Add_Name_Appeal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

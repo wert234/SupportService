@@ -14,6 +14,10 @@ using System.Text;
 using Modules.Authentication.Application.Handlers;
 using Modules.Authentication.Application.Queries;
 using Modules.Authentication.Application.Commands;
+using Modules.Chat.Application.Command;
+using Modules.Chat.Application.Handlers;
+using Modules.Chat.Application.Common;
+using Modules.Chat.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,7 +56,10 @@ builder.Services.AddMediatR(options =>
     options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
     options.RegisterServicesFromAssemblies(typeof(RegistrationHandle).Assembly, typeof(RegistrationCommand).Assembly);
     options.RegisterServicesFromAssemblies(typeof(AuthorizationHandle).Assembly, typeof(AuthorizationCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(AddAppealHandler).Assembly, typeof(AddAppealCommand).Assembly);
 }); 
+
+builder.Services.AddScoped<IAppealRepository, AppealRepository>();
 
 #endregion
 
