@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Modules.Authentication.Application.Commands;
 using Modules.Authentication.Application.Queries;
+using Shared.Application.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,10 +36,10 @@ namespace Modules.Authentication.Controllers
         #region Controllers
 
         [HttpPost("Registration")]
-        public async Task<IActionResult> Registration(/*RegistrationCommand command*/)
+        public async Task<IActionResult> Registration(RegistrationCommand command)
         {
-            //    var result = await _mediator.Send(command);
-            return Ok(); //ControllerHandle.Resultchecking(result, true);
+                var result = await _mediator.Send(command);
+            return ControllerHandle.Resultchecking(result, true);
         }
 
         [HttpPost("Authorization")]
