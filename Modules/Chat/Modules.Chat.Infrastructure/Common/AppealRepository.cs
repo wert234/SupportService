@@ -20,6 +20,12 @@ namespace Modules.Chat.Infrastructure.Common
             this.dbContext = dbContext;
         }
 
+        public async Task AddMessageAsync(Message message, int appealId)
+        {
+            message.Appeal = await GetAsync(appealId);
+            await dbContext.AddAsync(message);
+        }
+
         public async Task CreateAsync(Appeal item)
         {
             await dbContext.AddAsync(item);
@@ -32,7 +38,7 @@ namespace Modules.Chat.Infrastructure.Common
 
         public async Task<Appeal> GetAsync(int id)
         {
-            return await dbContext.Appeals.FirstOrDefaultAsync(appeal => appeal.Id == id);
+            return await dbContext.Appeals.Include("Messages").FirstOrDefaultAsync(appeal => appeal.Id == id);
         }
 
         public async Task<IEnumerable<Appeal>> GetListAsync()

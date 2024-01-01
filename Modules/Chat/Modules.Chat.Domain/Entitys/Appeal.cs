@@ -7,7 +7,7 @@ namespace Modules.Chat.Domain.Entitys
         public int Id { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public IEnumerable<Message> Messages { get; set; } = Enumerable.Empty<Message>();
+        public ICollection<Message> Messages { get; set; }
         public Status Status { get; set; } = Status.Creaded;
     }
 }

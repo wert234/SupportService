@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Modules.Chat.Application.Command;
+using Shared.Application.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +16,24 @@ namespace Modules.Chat.Controllers
     {
         #region Fileds
 
-     //   private IMediator _mediator;
+        private IMediator _mediator;
 
         #endregion
 
         #region Init
 
-     //   public ChatController(IMediator mediator)
-    //    => _mediator = mediator;
+        public ChatController(IMediator mediator)
+        => _mediator = mediator;
 
         #endregion
 
         #region Controllers
 
         [HttpPost("Send")]
-        public async Task<IActionResult> Send(/*RegistrationCommand command*/)
+        public async Task<IActionResult> Send(SendMessageCommand command)
         {
-            //    var result = await _mediator.Send(command);
-            return Ok(); // ControllerHandle.Resultchecking(result, true);
+            await _mediator.Send(command);
+            return StatusCode(201);
         }
 
         #endregion
