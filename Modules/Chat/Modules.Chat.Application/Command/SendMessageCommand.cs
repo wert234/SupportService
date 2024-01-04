@@ -12,5 +12,6 @@ namespace Modules.Chat.Application.Command
     {
         public int AppealId { get; set; }
         public string Text { get; set; }
+        public int UserId { get; set; }
     }
 }

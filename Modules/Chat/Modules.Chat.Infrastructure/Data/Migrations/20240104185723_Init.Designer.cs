@@ -11,7 +11,7 @@ using Modules.Chat.Infrastructure.Data;
 namespace Modules.Chat.Infrastructure.Migrations
 {
     [DbContext(typeof(AppealDbContext))]
-    [Migration("20231231154711_Init")]
+    [Migration("20240104185723_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -44,7 +44,7 @@ namespace Modules.Chat.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Appeals");
+                    b.ToTable("Appeal", (string)null);
                 });
 
             modelBuilder.Entity("Modules.Chat.Domain.Entitys.Message", b =>
@@ -62,11 +62,14 @@ namespace Modules.Chat.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AppealId");
 
-                    b.ToTable("Message");
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Modules.Chat.Domain.Entitys.Message", b =>

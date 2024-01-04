@@ -10,5 +10,6 @@ namespace Modules.Chat.Domain.Entitys
         public string Text { get; set; } = string.Empty;
         public int AppealId { get; set; }
         public Appeal Appeal { get; set; }
+        public  int UserId { get; set; }
     }
 }

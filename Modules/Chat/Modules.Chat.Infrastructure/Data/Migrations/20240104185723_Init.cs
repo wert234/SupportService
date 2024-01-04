@@ -11,7 +11,7 @@ namespace Modules.Chat.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Appeals",
+                name: "Appeal",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,32 +22,33 @@ namespace Modules.Chat.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Appeals", x => x.Id);
+                    table.PrimaryKey("PK_Appeal", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message",
+                name: "Messages",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Text = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AppealId = table.Column<int>(type: "int", nullable: false)
+                    AppealId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => x.Id);
+                    table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Message_Appeals_AppealId",
+                        name: "FK_Messages_Appeal_AppealId",
                         column: x => x.AppealId,
-                        principalTable: "Appeals",
+                        principalTable: "Appeal",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Message_AppealId",
-                table: "Message",
+                name: "IX_Messages_AppealId",
+                table: "Messages",
                 column: "AppealId");
         }
 
@@ -55,10 +56,10 @@ namespace Modules.Chat.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Message");
+                name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "Appeals");
+                name: "Appeal");
         }
     }
 }

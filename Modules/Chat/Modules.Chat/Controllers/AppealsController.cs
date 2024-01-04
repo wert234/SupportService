@@ -32,16 +32,13 @@ namespace Modules.Chat.Controllers
 
         #region Controllers
 
-        [HttpGet("GetAppeals")]
-        public async Task<IActionResult> GetAppeals(/*GetAppealsQuere quere*/)
-            => Ok(/*await _mediator.Send(quere)*/);
-
         [HttpPost("CreateAppeal")]
         public async Task<IActionResult> CreateAppeal(AppealDTO appealDTO)
         {
             await _mediator.Send(new AddAppealCommand(appealDTO));
             return StatusCode(201);
         }
+
         #endregion
     }
 }

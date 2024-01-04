@@ -25,6 +25,7 @@ namespace Modules.Chat.Application.Command
                     {
                         Appeal = Appeal,
                         Text = appealDTO.Message,
+                        UserId= appealDTO.UserId,
                     }
                 }
             };

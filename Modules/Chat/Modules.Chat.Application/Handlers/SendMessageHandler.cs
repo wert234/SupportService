@@ -25,7 +25,7 @@ namespace Modules.Chat.Application.Handlers
 
         public async Task Handle(SendMessageCommand request, CancellationToken cancellationToken)
         {
-            await repository.AddMessageAsync(new Message() { Text = request.Text }, request.AppealId);
+            await repository.AddMessageAsync(new Message() { Text = request.Text, UserId = request.UserId }, request.AppealId);
             await repository.SaveAsync();
         }
 
