@@ -44,7 +44,7 @@ builder.Services.AddTransient<JwtTokenGenerator>();
 builder.Services.AddControllers()
    .AddApplicationPart(typeof(AuthenticationController).Assembly)
    .AddApplicationPart(typeof(AppealsController).Assembly)
-   .AddApplicationPart(typeof(ChatController).Assembly);
+   .AddApplicationPart(typeof(MessageController).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -56,7 +56,7 @@ builder.Services.AddMediatR(options =>
     options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
     options.RegisterServicesFromAssemblies(typeof(RegistrationHandle).Assembly, typeof(RegistrationCommand).Assembly);
     options.RegisterServicesFromAssemblies(typeof(AuthorizationHandle).Assembly, typeof(AuthorizationCommand).Assembly);
-    options.RegisterServicesFromAssemblies(typeof(AddAppealHandler).Assembly, typeof(AddAppealCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(CreateAppealHandler).Assembly, typeof(CreateAppealCommand).Assembly);
 }); 
 
 builder.Services.AddScoped<IAppealRepository, AppealRepository>();

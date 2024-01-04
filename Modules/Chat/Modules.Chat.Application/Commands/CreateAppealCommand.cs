@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Modules.Chat.Application.Command
 {
-    public class AddAppealCommand : IRequest
+    public class CreateAppealCommand : IRequest
     {
         public Appeal Appeal { get; set; }
 
-        public AddAppealCommand(AppealDTO appealDTO)
+        public CreateAppealCommand(AppealDTO appealDTO)
         {
             Appeal = new Appeal
             {

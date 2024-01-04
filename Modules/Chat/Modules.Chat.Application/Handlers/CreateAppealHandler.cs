@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Modules.Chat.Application.Handlers
 {
-    public class AddAppealHandler : IRequestHandler<AddAppealCommand>
+    public class CreateAppealHandler : IRequestHandler<CreateAppealCommand>
     {
         #region Fileds
 
@@ -21,12 +21,12 @@ namespace Modules.Chat.Application.Handlers
 
         #region Init
 
-        public AddAppealHandler(IAppealRepository repository)
+        public CreateAppealHandler(IAppealRepository repository)
             => this.repository = repository;
 
         #endregion
 
-        public async Task Handle(AddAppealCommand request, CancellationToken cancellationToken)
+        public async Task Handle(CreateAppealCommand request, CancellationToken cancellationToken)
         {
             await repository.CreateAsync(request.Appeal);
             await repository.SaveAsync();

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Modules.Chat.Application.Command;
+using Modules.Chat.Application.Commands;
 using Modules.Chat.Application.DTO;
 using Modules.Chat.Domain.Entitys;
 using System;
@@ -35,8 +36,14 @@ namespace Modules.Chat.Controllers
         [HttpPost("CreateAppeal")]
         public async Task<IActionResult> CreateAppeal(AppealDTO appealDTO)
         {
-            await _mediator.Send(new AddAppealCommand(appealDTO));
+            await _mediator.Send(new CreateAppealCommand(appealDTO));
             return StatusCode(201);
+        }
+
+        [HttpGet("GetAppeals/UserId")]
+        public async Task<IEnumerable<AppealDTO>> GetAppeals(int UserId)
+        {
+            return await _mediator.Send(new GetAppealsQuery(UserId));
         }
 
         #endregion

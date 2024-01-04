@@ -11,5 +11,6 @@ namespace Modules.Chat.Application.Common
     public interface IAppealRepository : IRepository<Appeal>
     {
         public Task AddMessageAsync(Message message, int appealId);
+        Task<IEnumerable<Appeal>> GetListAsync(int userId);
     }
 }

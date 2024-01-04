@@ -12,7 +12,7 @@ namespace Modules.Chat.Controllers
 {
     [Route("api/Chat/[controller]")]
     [ApiController]
-    public class ChatController : ControllerBase
+    public class MessageController : ControllerBase
     {
         #region Fileds
 
@@ -22,7 +22,7 @@ namespace Modules.Chat.Controllers
 
         #region Init
 
-        public ChatController(IMediator mediator)
+        public MessageController(IMediator mediator)
         => _mediator = mediator;
 
         #endregion
