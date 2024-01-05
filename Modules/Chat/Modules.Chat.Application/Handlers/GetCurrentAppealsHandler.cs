@@ -32,11 +32,12 @@ namespace Modules.Chat.Application.Handlers
             return (await repository.GetListAsync(request.UserId))
                 .Where(x => x.Status != Domain.Enums.Status.Closed)
                 .Select(appeal => new AppealDTO()
-            {
-                UserId = appeal.Id,
-                Name = appeal.Name,
-                Message = appeal.Messages.ToArray()[0].Text,
-            });
+                {
+                    UserId = appeal.UserId,
+                    Name = appeal.Name,
+                    Message = appeal.Messages.ToArray()[0].Text,
+                    date = appeal.date,
+                });
         }
     }
 }

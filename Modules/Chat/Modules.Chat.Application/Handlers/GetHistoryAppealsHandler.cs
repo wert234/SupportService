@@ -31,9 +31,10 @@ namespace Modules.Chat.Application.Handlers
         {
             return (await repository.GetListAsync(request.UserId)).Select(appeal => new AppealDTO()
             {
-                UserId = appeal.Id,
+                UserId = appeal.UserId,
                 Name = appeal.Name,
                 Message = appeal.Messages.ToArray()[0].Text,
+                date = appeal.date,
             });
         }
 
