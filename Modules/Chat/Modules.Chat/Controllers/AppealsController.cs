@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Modules.Chat.Application.Command;
 using Modules.Chat.Application.Commands;
 using Modules.Chat.Application.DTO;
+using Modules.Chat.Application.Querys;
 using Modules.Chat.Domain.Entitys;
 using System;
 using System.Collections.Generic;
@@ -40,10 +41,24 @@ namespace Modules.Chat.Controllers
             return StatusCode(201);
         }
 
-        [HttpGet("GetAppeals/UserId")]
-        public async Task<IEnumerable<AppealDTO>> GetAppeals(int UserId)
+        [HttpPost("CloseAppeals/AppealId")]
+        public async Task<IActionResult> CloseAppeal(int AppealId)
         {
-            return await _mediator.Send(new GetAppealsQuery(UserId));
+            await _mediator.Send(new CloseAppealsCommand(AppealId));
+            return StatusCode(201);
+        }
+
+
+        [HttpGet("GetCurrentAppeals/UserId")]
+        public async Task<IEnumerable<AppealDTO>> GetCurrentAppeals(int UserId)
+        {
+            return await _mediator.Send(new GetCurrentAppealsQuery(UserId));
+        }
+
+        [HttpGet("GetHistoryAppeals/UserId")]
+        public async Task<IEnumerable<AppealDTO>> GetHistoryAppeals(int UserId)
+        {
+            return await _mediator.Send(new GetHistoryAppealsQuery(UserId));
         }
 
         #endregion

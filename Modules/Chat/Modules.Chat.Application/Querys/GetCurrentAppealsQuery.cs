@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Chat.Application.Commands
+namespace Modules.Chat.Application.Querys
 {
-    public class GetAppealsQuery(int UserId) : IRequest<IEnumerable<AppealDTO>>
+    public class GetCurrentAppealsQuery(int UserId) : IRequest<IEnumerable<AppealDTO>>
     {
         public int UserId { get; set; } = UserId;
     }

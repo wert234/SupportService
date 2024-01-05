@@ -12,12 +12,15 @@ using Shared.Infrastructure.Common;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Modules.Authentication.Application.Handlers;
-using Modules.Authentication.Application.Queries;
 using Modules.Authentication.Application.Commands;
 using Modules.Chat.Application.Command;
 using Modules.Chat.Application.Handlers;
 using Modules.Chat.Application.Common;
 using Modules.Chat.Infrastructure.Common;
+using Modules.Chat.Application.Commands;
+using Modules.Chat.Application.Querys;
+using Modules.Authentication.Application.Common;
+using Modules.Authentication.Infrastructure.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,13 +56,18 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(options =>
 {
-    options.RegisterServicesFromAssemblies(typeof(GetTokenHandler).Assembly, typeof(GetTokenQuerie).Assembly);
     options.RegisterServicesFromAssemblies(typeof(RegistrationHandle).Assembly, typeof(RegistrationCommand).Assembly);
     options.RegisterServicesFromAssemblies(typeof(AuthorizationHandle).Assembly, typeof(AuthorizationCommand).Assembly);
     options.RegisterServicesFromAssemblies(typeof(CreateAppealHandler).Assembly, typeof(CreateAppealCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(SendMessageHandler).Assembly, typeof(SendMessageCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(CreateAppealHandler).Assembly, typeof(CreateAppealCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(CloseAppealsHandler).Assembly, typeof(CloseAppealsCommand).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(GetHistoryAppealsHandler).Assembly, typeof(GetHistoryAppealsQuery).Assembly);
+    options.RegisterServicesFromAssemblies(typeof(GetCurrentAppealsHandler).Assembly, typeof(GetCurrentAppealsQuery).Assembly);
 }); 
 
 builder.Services.AddScoped<IAppealRepository, AppealRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 #endregion
 

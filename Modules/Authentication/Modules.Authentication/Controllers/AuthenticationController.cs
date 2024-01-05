@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Modules.Authentication.Application.Commands;
-using Modules.Authentication.Application.Queries;
 using Shared.Application.Common;
 using System;
 using System.Collections.Generic;
@@ -47,15 +46,6 @@ namespace Modules.Authentication.Controllers
         {
             var result = await _mediator.Send(command);
             return ControllerHandle.Resultchecking(result.Success, true, result);
-        }
-
-        [HttpPost("GetToken")]
-        public async Task<IActionResult> GetToken()
-        {
-            var querie = new GetTokenQuerie();
-            querie.User = new Domain.Entitys.ApplicationUser() { UserName = "Влад", Id = 1 };
-
-            return Ok(await _mediator.Send(querie));
         }
 
         #endregion

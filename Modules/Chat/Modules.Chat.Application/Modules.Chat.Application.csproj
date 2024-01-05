@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Modules.Chat.Domain\Modules.Chat.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Querys\" />
-  </ItemGroup>
-
 </Project>
