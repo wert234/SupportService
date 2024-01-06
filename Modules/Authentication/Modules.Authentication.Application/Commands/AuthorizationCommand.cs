@@ -8,6 +8,5 @@ using System.Threading.Tasks;
 
 namespace Modules.Authentication.Application.Commands
 {
-    public class AuthorizationCommand : AuthenticationCommand,
-        IRequest<AuthorizationResult>;
+    public class AuthorizationCommand : AuthenticationCommand;
 }

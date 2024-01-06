@@ -36,17 +36,12 @@ namespace Modules.Authentication.Controllers
 
         [HttpPost("Registration")]
         public async Task<IActionResult> Registration(RegistrationCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return ControllerHandle.Resultchecking(result, true);
-        }
+            => await _mediator.Send(command);
+
 
         [HttpPost("Authorization")]
         public async Task<IActionResult> Authorization(AuthorizationCommand command)
-        {
-            var result = await _mediator.Send(command);
-            return ControllerHandle.Resultchecking(result.Success, true, result);
-        }
+            => await _mediator.Send(command);
 
         #endregion
     }

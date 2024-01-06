@@ -6,6 +6,7 @@ using Modules.Chat.Application.Commands;
 using Modules.Chat.Application.DTO;
 using Modules.Chat.Application.Querys;
 using Modules.Chat.Domain.Entitys;
+using Shared.Application.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Modules.Chat.Controllers
 {
     [Route("api/Chat/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+    [Authorize(Roles = "user3")]
     public class AppealsController : ControllerBase
     {
         #region Fileds
@@ -35,32 +36,21 @@ namespace Modules.Chat.Controllers
         #region Controllers
 
         [HttpPost("CreateAppeal")]
-        public async Task<IActionResult> CreateAppeal(AppealDTO appealDTO)
-        {
-            await _mediator.Send(new CreateAppealCommand(appealDTO));
-            return StatusCode(201);
-        }
-
+        public async Task CreateAppeal(AppealDTO appealDTO)
+            => await _mediator.Send(new CreateAppealCommand(appealDTO));
+        
         [HttpPost("CloseAppeals/AppealId")]
         public async Task<IActionResult> CloseAppeal(int AppealId)
-        {
-            await _mediator.Send(new CloseAppealsCommand(AppealId));
-            return StatusCode(201);
-        }
-
+            =>await _mediator.Send(new CloseAppealsCommand(AppealId));
 
         [HttpGet("GetCurrentAppeals/UserId")]
-        public async Task<IEnumerable<AppealDTO>> GetCurrentAppeals(int UserId)
-        {
-            return await _mediator.Send(new GetCurrentAppealsQuery(UserId));
-        }
-
+        public async Task<object> GetCurrentAppeals(int UserId)
+            => await _mediator.Send(new GetCurrentAppealsQuery(UserId));
+        
         [HttpGet("GetHistoryAppeals/UserId")]
-        public async Task<IEnumerable<AppealDTO>> GetHistoryAppeals(int UserId)
-        {
-            return await _mediator.Send(new GetHistoryAppealsQuery(UserId));
-        }
-
+        public async Task<IActionResult> GetHistoryAppeals(int UserId)
+            => await _mediator.Send(new GetHistoryAppealsQuery(UserId));
+        
         #endregion
     }
 }

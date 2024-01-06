@@ -21,6 +21,7 @@ using Modules.Chat.Application.Commands;
 using Modules.Chat.Application.Querys;
 using Modules.Authentication.Application.Common;
 using Modules.Authentication.Infrastructure.Common;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +51,17 @@ builder.Services.AddControllers()
    .AddApplicationPart(typeof(MessageController).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+    });
+});
 
 #region MediatR Settings
 
@@ -118,6 +129,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

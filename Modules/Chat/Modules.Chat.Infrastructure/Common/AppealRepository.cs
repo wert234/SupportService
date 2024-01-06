@@ -38,12 +38,18 @@ namespace Modules.Chat.Infrastructure.Common
 
         public async Task<Appeal> GetAsync(int id)
         {
-            return await dbContext.Appeals.Include("Messages").FirstOrDefaultAsync(appeal => appeal.Id == id);
+            return await dbContext.Appeals
+                .Include("Messages")
+                .FirstOrDefaultAsync(appeal => appeal.Id == id);
         }
 
         public async Task<IEnumerable<Appeal>> GetListAsync(int UserId)
         {
-            return (await dbContext.Appeals.Include("Messages").ToArrayAsync()).Where(x => x.UserId == UserId).ToArray();
+            return (await dbContext.Appeals
+                .Include("Messages")
+                .ToArrayAsync())
+                .Where(x => x.UserId == UserId)
+                .ToArray();
         }
 
         public async Task<IEnumerable<Appeal>> GetListAsync()
