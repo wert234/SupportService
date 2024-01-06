@@ -17,7 +17,7 @@ namespace Modules.Chat.Controllers
 {
     [Route("api/Chat/[controller]")]
     [ApiController]
-    [Authorize(Roles = "user3")]
+    [Authorize(Roles = "user")]
     public class AppealsController : ControllerBase
     {
         #region Fileds
