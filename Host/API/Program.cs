@@ -22,8 +22,11 @@ using Modules.Chat.Application.Querys;
 using Modules.Authentication.Application.Common;
 using Modules.Authentication.Infrastructure.Common;
 using Microsoft.OpenApi.Models;
+using Modules.Chat.Application.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSignalR();
 
 #region Jwt Settings
 
@@ -133,5 +136,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/chat");
 
 app.Run();
