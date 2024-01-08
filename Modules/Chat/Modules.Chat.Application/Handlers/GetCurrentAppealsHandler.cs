@@ -43,7 +43,7 @@ namespace Modules.Chat.Application.Handlers
                 });
 
             if (listAppeal.Count() == 0)
-                return new ObjectResult("Токого пользователя не существует") { StatusCode = (int)HttpStatusCode.BadRequest };
+                return new ObjectResult("Токого пользователя не существует или у него ещё нет обращений") { StatusCode = (int)HttpStatusCode.BadRequest };
             
           return new ObjectResult(listAppeal) { StatusCode = (int)HttpStatusCode.OK };
         }

@@ -37,10 +37,8 @@ namespace Modules.Chat.Controllers
 
         [HttpPost("Send")]
         public async Task<IActionResult> Send(SendMessageCommand command)
-        {
-            await _mediator.Send(command);
-            return StatusCode(201);
-        }
+            => await _mediator.Send(command);
+        
 
         #endregion
     }
